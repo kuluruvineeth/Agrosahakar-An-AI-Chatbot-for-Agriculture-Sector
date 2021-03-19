@@ -1,0 +1,147 @@
+version: "2.0"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - good afternoon
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+
+- intent: price
+  examples: |
+    - what's the price
+    - i want to know the price
+    - i want to know the price of today
+    - tell me the price forecast
+    - hows the price today
+    - what is the money
+    - what is the money today
+
+- intent: price_for_crop
+  examples: |
+    - what is the price of [carrot](crop)
+    - what is the price of [potato](crop)
+    - price of [tomato](crop)
+    - Today's price of [cucumber](crop)
+    - [Drumstick](crop) price
+    - Tell me price of [cotton](crop)
+    - can you tell me price of [rice](crop)
+
+- intent: crop_info
+  examples: |
+    - [carrot](crop)
+    - [potato](crop)
+    - [tomato](crop)
+    - [cucumber](crop)
+    - [Drumstick](crop)
+    - [cotton](crop)
+    - [rice](crop)
+
+- intent: thanks
+  examples: |
+    - thanks
+    - thank you
+    - ok
+- intent: ask_price
+  examples: |
+    - whats the price?
+    - whats the price of [rice](crop)
+    - [rice] price
+    
+- intent: state_entry
+  examples: |
+    - [Andhra Pradesh](location)
+    - [Talangana](location)
+    - [Assam](location)
+    - [Bihar](location)
+    - [Chandigarh](location)
+    - [Chhattisgarh](location)
+    - [Delhi](location)
+    - [Gujarat](location)
+    - [Haryana](location)
+
+
