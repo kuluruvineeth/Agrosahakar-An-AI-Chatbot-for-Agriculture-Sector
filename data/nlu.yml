@@ -17,6 +17,20 @@ nlu:
     - goodevening
     - good afternoon
 
+- intent: greet1
+  examples: |
+    - msp
+    - msp of crop
+    - price
+    - money
+    - crop worth
+    - value
+    - crop value
+    - price of crop
+    - minimum price
+    - support price
+    - support
+
 - intent: goodbye
   examples: |
     - good afternoon
@@ -100,6 +114,10 @@ nlu:
     - hows the price today
     - what is the money
     - what is the money today
+    - I want market information for [cotton](crop)
+    - I want market information for [jute](crop)
+    - What is the market value of [rice](crop)?
+    - I would like to know the price of (crop)
 
 - intent: price_for_crop
   examples: |
@@ -111,7 +129,7 @@ nlu:
     - Tell me price of [cotton](crop)
     - can you tell me price of [rice](crop)
 
-- intent: crop_info
+- intent: crop_entry
   examples: |
     - [carrot](crop)
     - [potato](crop)
@@ -120,6 +138,7 @@ nlu:
     - [Drumstick](crop)
     - [cotton](crop)
     - [rice](crop)
+    - [jute](crop)
 
 - intent: thanks
   examples: |
@@ -143,5 +162,33 @@ nlu:
     - [Delhi](location)
     - [Gujarat](location)
     - [Haryana](location)
+    - [Punjab](location)
+    - [Rajasthan](location)
+    - [Maharashtra](location)
+    - [MP](location)
+    - [Karnataka](location)
+    - [Odisha](location)
+    - [West Bengal](location)
+    - [A.P.](location)
+    - [Tripura](location)
+
+- intent: out_of_scope
+  examples: |
+    - When will farmers agitation end?
+    - is farmers bill fair?
+    - what is 2?
+    - Give me your whatsapp number
+    - What is your girlfriend name
+    - girlfriend
+
+- intent: ferti
+  examples: |
+    - can you give fertilizer information
+    - fertilizer information
+    - fertilizer
+    - i want know about fertilizer consumption
+    - usage of fertilizer
+    - consumption of fertilizers 
+  
 
 

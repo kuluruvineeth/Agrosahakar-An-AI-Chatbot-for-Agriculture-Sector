@@ -36,6 +36,25 @@ stories:
   - intent: state_entry
   - action: action_get_price
 
+- story:  msp path 2
+  steps:
+  - intent: greet1
+  - action: utter_greet1
+  - intent: crop_entry
+  - action: utter_tc_as
+  - intent: state_entry
+  - action: action_get_price
+
+- story:  Fertilizer consumption
+  steps:
+  - intent: ferti
+  - action: utter_ferti
+  - intent: state_entry
+  - action: action_get_fertilizers
+  - action: utter_did_that_help
+  - intent: mood_great
+  - action: utter_happy 
+
 
 
 

@@ -20,8 +20,8 @@ intents:
 - bot_challenge:
     use_entities: true
 - state_entry:
-    use_entities: []
-- crop_info:
+    use_entities: true
+- crop_entry:
     use_entities: true
 - thanks:
     use_entities: true
@@ -31,11 +31,22 @@ intents:
     use_entities: true
 - ask_price:
     use_entities: true
+- greet1:
+    use_entities: true
+- out_of_scope:
+    use_entities: true
+- ferti:
+    use_entities: true
 entities:
 - location
 - crop
 slots:
   location:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  crop:
     type: rasa.shared.core.slots.TextSlot
     initial_value: null
     auto_fill: true
@@ -49,12 +60,19 @@ responses:
   utter_did_that_help:
   - text: Did that help you?
   utter_happy:
-  - text: Great, carry on!
+  - text: Great, carry on! and will work more to assist you in all ways
   utter_goodbye:
   - text: Bye
   utter_iamabot:
   - text: I am a bot, powered by Rasa.
+  utter_greet1:
+  - text: Hey i can help you know the msp of various crops.please enter your crop
+  utter_tc_as:
+  - text: Great! your crop is {crop} now please enter your state
+  utter_ferti:
+  - text: oh yes i can give you fertilizer information statewise! please enter your state
 actions:
 - action_get_price
+- action_get_fertilizers
 forms: {}
 e2e_actions: []
