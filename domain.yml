@@ -23,23 +23,43 @@ intents:
     use_entities: true
 - crop_entry:
     use_entities: true
-- thanks:
-    use_entities: true
 - price:
-    use_entities: true
-- price_for_crop:
-    use_entities: true
-- ask_price:
-    use_entities: true
-- greet1:
     use_entities: true
 - out_of_scope:
     use_entities: true
 - ferti:
     use_entities: true
+- add_data:
+    use_entities: true
+- recommend:
+    use_entities: true
+- statistics:
+    use_entities: true
+- about_us:
+    use_entities: true
+- agribot:
+    use_entities: true
+- nitrogen_entry:
+    use_entities: true
+- phosphorous_entry:
+    use_entities: true
+- potassium_entry:
+    use_entities: true
+- cities:
+    use_entities: true
+- power_hydrogen:
+    use_entities: true
+- rainfall_entry:
+    use_entities: true
 entities:
 - location
 - crop
+- potassium
+- phosphorous
+- nitrogen
+- ph
+- rainfall
+- city
 slots:
   location:
     type: rasa.shared.core.slots.TextSlot
@@ -51,9 +71,74 @@ slots:
     initial_value: null
     auto_fill: true
     influence_conversation: true
+  name:
+    type: rasa.shared.core.slots.UnfeaturizedSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  number:
+    type: rasa.shared.core.slots.UnfeaturizedSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  land:
+    type: rasa.shared.core.slots.UnfeaturizedSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  quantity:
+    type: rasa.shared.core.slots.UnfeaturizedSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  aadharno:
+    type: rasa.shared.core.slots.UnfeaturizedSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  nitrogen:
+    type: rasa.shared.core.slots.UnfeaturizedSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  phosphorous:
+    type: rasa.shared.core.slots.UnfeaturizedSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  potassium:
+    type: rasa.shared.core.slots.UnfeaturizedSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  ph:
+    type: rasa.shared.core.slots.UnfeaturizedSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  rainfall:
+    type: rasa.shared.core.slots.UnfeaturizedSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  city:
+    type: rasa.shared.core.slots.UnfeaturizedSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  requested_slot:
+    type: rasa.shared.core.slots.UnfeaturizedSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
 responses:
   utter_greet:
-  - text: Hey! To know the msp of rice ! please enter your state
+  - buttons:
+    - payload: /about_us
+      title: About us
+    - payload: /agribot
+      title: chat with AGRIBOT
+    text: Welcome to AGRIGROW!, All your farming needs at one place.
   utter_cheer_up:
   - image: https://i.imgur.com/nGF1K8f.jpg
     text: 'Here is something to cheer you up:'
@@ -71,8 +156,55 @@ responses:
   - text: Great! your crop is {crop} now please enter your state
   utter_ferti:
   - text: oh yes i can give you fertilizer information statewise! please enter your state
+  utter_ask_name:
+  - text: May i know your name please
+  utter_ask_number:
+  - text: May i know your mobile number please
+  utter_ask_land:
+  - text: May i know land registered in your name please
+  utter_ask_quantity:
+  - text: May i know the quantity u want to register please
+  utter_ask_aadharno:
+  - text: May i know your aadhar id please
+  utter_about_us:
+  - image: https://media.discordapp.net/attachments/776855480177000504/824305503857147914/2Q.png
+    text: Here's the link our website.
+  utter_agribot:
+  - buttons:
+    - payload: /statistics
+      title: crop statistics
+    - payload: /ferti
+      title: fertilizer recommendation
+    - payload: /recommend
+      title: crop recommendation
+    text: Hi there! I am AGRIBOT, an agricultural AI chatbot to serve you with the following needs in agriculture sector.
+  utter_statistics:
+  - buttons:
+    - payload: /price
+      title: crop price
+    - payload: /ferti
+      title: fertilizers
+    text: select the field in which you want to know information.
+  utter_ask_crop:
+  - text: please type your crop name
+  utter_ask_nitrogen:
+  - text: please enter nitrogen value
+  utter_ask_phos:
+  - text: enter phosphorous value
+  utter_ask_potas:
+  - text: enter potassium value
+  utter_ask_ph:
+  - text: please enter ph value
+  utter_ask_rainfall:
+  - text: amount of rainfall in your region
+  utter_ask_city:
+  - text: please enter city name
 actions:
 - action_get_price
 - action_get_fertilizers
-forms: {}
+- action_ferti_recommendation
+- action_crop_recommendation
+- action_save_data
+forms:
+  form_info: {}
 e2e_actions: []

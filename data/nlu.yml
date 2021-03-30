@@ -1,5 +1,4 @@
 version: "2.0"
-
 nlu:
 - intent: greet
   examples: |
@@ -16,21 +15,6 @@ nlu:
     - goodmorning
     - goodevening
     - good afternoon
-
-- intent: greet1
-  examples: |
-    - msp
-    - msp of crop
-    - price
-    - money
-    - crop worth
-    - value
-    - crop value
-    - price of crop
-    - minimum price
-    - support price
-    - support
-
 - intent: goodbye
   examples: |
     - good afternoon
@@ -44,7 +28,6 @@ nlu:
     - see you around
     - bye bye
     - see you later
-
 - intent: affirm
   examples: |
     - yes
@@ -53,7 +36,6 @@ nlu:
     - of course
     - that sounds good
     - correct
-
 - intent: deny
   examples: |
     - no
@@ -63,7 +45,6 @@ nlu:
     - don't like that
     - no way
     - not really
-
 - intent: mood_great
   examples: |
     - perfect
@@ -80,7 +61,6 @@ nlu:
     - so so perfect
     - so good
     - so perfect
-
 - intent: mood_unhappy
   examples: |
     - my day was horrible
@@ -97,38 +77,12 @@ nlu:
     - extremly sad
     - so saad
     - so sad
-
 - intent: bot_challenge
   examples: |
     - are you a bot?
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
-
-- intent: price
-  examples: |
-    - what's the price
-    - i want to know the price
-    - i want to know the price of today
-    - tell me the price forecast
-    - hows the price today
-    - what is the money
-    - what is the money today
-    - I want market information for [cotton](crop)
-    - I want market information for [jute](crop)
-    - What is the market value of [rice](crop)?
-    - I would like to know the price of (crop)
-
-- intent: price_for_crop
-  examples: |
-    - what is the price of [carrot](crop)
-    - what is the price of [potato](crop)
-    - price of [tomato](crop)
-    - Today's price of [cucumber](crop)
-    - [Drumstick](crop) price
-    - Tell me price of [cotton](crop)
-    - can you tell me price of [rice](crop)
-
 - intent: crop_entry
   examples: |
     - [carrot](crop)
@@ -139,18 +93,6 @@ nlu:
     - [cotton](crop)
     - [rice](crop)
     - [jute](crop)
-
-- intent: thanks
-  examples: |
-    - thanks
-    - thank you
-    - ok
-- intent: ask_price
-  examples: |
-    - whats the price?
-    - whats the price of [rice](crop)
-    - [rice] price
-    
 - intent: state_entry
   examples: |
     - [Andhra Pradesh](location)
@@ -171,7 +113,6 @@ nlu:
     - [West Bengal](location)
     - [A.P.](location)
     - [Tripura](location)
-
 - intent: out_of_scope
   examples: |
     - When will farmers agitation end?
@@ -180,15 +121,126 @@ nlu:
     - Give me your whatsapp number
     - What is your girlfriend name
     - girlfriend
-
 - intent: ferti
   examples: |
-    - can you give fertilizer information
-    - fertilizer information
-    - fertilizer
-    - i want know about fertilizer consumption
-    - usage of fertilizer
-    - consumption of fertilizers 
-  
-
-
+    - fertilizer recommendation
+- intent: add_data
+  examples: |
+    - i want to register data for cci
+    - add user data
+    - ask me questions for cci registration
+    - what information is required to register for cci
+    - register for cci
+- intent: recommend
+  examples: |
+    - crop_recommendation
+- intent: statistics
+  examples: |
+    - crop statistics
+- intent: about_us
+  examples: |
+    - we are agri helpers
+- intent: agribot
+  examples: |
+    - /agribot
+- intent: nitrogen_entry
+  examples: |
+    - [N_10](nitrogen)
+    - [N_20](nitrogen)
+    - [N_30](nitrogen)
+    - [N_40](nitrogen)
+    - [N_50](nitrogen)
+    - [N_60](nitrogen)
+    - [N_70](nitrogen)
+    - [N_80](nitrogen)
+    - [N_90](nitrogen)
+    - [N_100](nitrogen)
+    - [N_110](nitrogen)
+    - [N_120](nitrogen)
+- intent: phosphorous_entry
+  examples: |
+    - [P_10](phosphorous)
+    - [P_20](phosphorous)
+    - [P_30](phosphorous)
+    - [P_40](phosphorous)
+    - [P_50](phosphorous)
+    - [P_60](phosphorous)
+    - [P_70](phosphorous)
+    - [P_80](phosphorous)
+    - [P_90](phosphorous)
+    - [P_100](phosphorous)
+    - [P_110](phosphorous)
+    - [P_115](phosphorous)
+    - [P_120](phosphorous)
+    - [P_125](phosphorous)
+    - [P_130](phosphorous)
+- intent: potassium_entry
+  examples: |
+    - [K_10](potassium)
+    - [K_20](potassium)
+    - [K_30](potassium)
+    - [K_40](potassium)
+    - [K_50](potassium)
+    - [K_60](potassium)
+    - [K_70](potassium)
+    - [K_80](potassium)
+    - [K_90](potassium)
+    - [K_100](potassium)
+    - [K_200](potassium)
+    - [K_120](potassium)
+- intent: power_hydrogen
+  examples: |
+    - [ph_6.50](ph)
+    - [ph_7.03](ph)
+    - [ph_7.84](ph)
+    - [ph_6.28](ph)
+    - [ph_5.28](ph)
+    - [ph_7.59](ph)
+    - [ph_7.70](ph)
+    - [ph_6.47](ph)
+    - [ph_6.43](ph)
+    - [ph_5.79](ph)
+    - [ph_7.98](ph)
+    - [ph_7.35](ph)
+    - [ph_5.65](ph)
+    - [ph_7.89](ph)
+    - [ph_6.78](ph)
+    - [ph_5.67](ph)
+    - [ph_6.75](ph)
+    - [ph_6.54](ph)
+- intent: rainfall_entry
+  examples: |
+    - [rf_185.27](rainfall)
+    - [rf_233.13](rainfall)
+    - [rf_185.94](rainfall)
+    - [rf_221.11](rainfall)
+    - [rf_263.72](rainfall)
+    - [rf_63.72](rainfall)
+    - [rf_90.98](rainfall)
+    - [rf_85.57](rainfall)
+    - [rf_92.06](rainfall)
+    - [rf_93.09](rainfall)
+    - [rf_69.63](rainfall)
+    - [rf_130.06](rainfall)
+    - [rf_89.76](rainfall)
+    - [rf_260](rainfall)
+    - [rf_97.60](rainfall)
+    - [rf_87.60](rainfall)
+    - [rf_97.80](rainfall)
+- intent: cities
+  examples: |
+    - [chennai](city)
+    - [mumbai](city)
+    - [kolkata](city)
+    - [bangalore](city)
+    - [coimbatore](city)
+    - [trichy](city)
+    - [hyderabad](city)
+    - [vizag](city)
+    - [hubli](city)
+    - [dharwad](city)
+    - [kurnool](city)
+    - [kharagpur](city)
+- intent: price
+  examples: |
+    - crop price
