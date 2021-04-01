@@ -9,27 +9,13 @@ intents:
     use_entities: true
 - goodbye:
     use_entities: true
-- affirm:
-    use_entities: true
-- deny:
-    use_entities: true
-- mood_great:
-    use_entities: true
-- mood_unhappy:
-    use_entities: true
-- bot_challenge:
-    use_entities: true
 - state_entry:
     use_entities: true
 - crop_entry:
     use_entities: true
 - price:
     use_entities: true
-- out_of_scope:
-    use_entities: true
 - ferti:
-    use_entities: true
-- add_data:
     use_entities: true
 - recommend:
     use_entities: true
@@ -51,6 +37,14 @@ intents:
     use_entities: true
 - rainfall_entry:
     use_entities: true
+- ferti_recommendation:
+    use_entities: true
+- bot_challenge:
+    use_entities: true
+- add_data:
+    use_entities: true
+- out_of_scope:
+    use_entities: true
 entities:
 - location
 - crop
@@ -71,66 +65,36 @@ slots:
     initial_value: null
     auto_fill: true
     influence_conversation: true
-  name:
-    type: rasa.shared.core.slots.UnfeaturizedSlot
-    initial_value: null
-    auto_fill: true
-    influence_conversation: false
-  number:
-    type: rasa.shared.core.slots.UnfeaturizedSlot
-    initial_value: null
-    auto_fill: true
-    influence_conversation: false
-  land:
-    type: rasa.shared.core.slots.UnfeaturizedSlot
-    initial_value: null
-    auto_fill: true
-    influence_conversation: false
-  quantity:
-    type: rasa.shared.core.slots.UnfeaturizedSlot
-    initial_value: null
-    auto_fill: true
-    influence_conversation: false
-  aadharno:
-    type: rasa.shared.core.slots.UnfeaturizedSlot
-    initial_value: null
-    auto_fill: true
-    influence_conversation: false
   nitrogen:
-    type: rasa.shared.core.slots.UnfeaturizedSlot
+    type: rasa.shared.core.slots.TextSlot
     initial_value: null
     auto_fill: true
-    influence_conversation: false
+    influence_conversation: true
   phosphorous:
-    type: rasa.shared.core.slots.UnfeaturizedSlot
+    type: rasa.shared.core.slots.TextSlot
     initial_value: null
     auto_fill: true
-    influence_conversation: false
+    influence_conversation: true
   potassium:
-    type: rasa.shared.core.slots.UnfeaturizedSlot
+    type: rasa.shared.core.slots.TextSlot
     initial_value: null
     auto_fill: true
-    influence_conversation: false
+    influence_conversation: true
   ph:
-    type: rasa.shared.core.slots.UnfeaturizedSlot
+    type: rasa.shared.core.slots.TextSlot
     initial_value: null
     auto_fill: true
-    influence_conversation: false
+    influence_conversation: true
   rainfall:
-    type: rasa.shared.core.slots.UnfeaturizedSlot
+    type: rasa.shared.core.slots.TextSlot
     initial_value: null
     auto_fill: true
-    influence_conversation: false
+    influence_conversation: true
   city:
-    type: rasa.shared.core.slots.UnfeaturizedSlot
+    type: rasa.shared.core.slots.TextSlot
     initial_value: null
     auto_fill: true
-    influence_conversation: false
-  requested_slot:
-    type: rasa.shared.core.slots.UnfeaturizedSlot
-    initial_value: null
-    auto_fill: true
-    influence_conversation: false
+    influence_conversation: true
 responses:
   utter_greet:
   - buttons:
@@ -173,7 +137,7 @@ responses:
   - buttons:
     - payload: /statistics
       title: crop statistics
-    - payload: /ferti
+    - payload: /ferti_recommendation
       title: fertilizer recommendation
     - payload: /recommend
       title: crop recommendation
@@ -199,12 +163,13 @@ responses:
   - text: amount of rainfall in your region
   utter_ask_city:
   - text: please enter city name
+  utter_ask_crop1:
+  - text: your crop name please
 actions:
 - action_get_price
 - action_get_fertilizers
 - action_ferti_recommendation
 - action_crop_recommendation
-- action_save_data
 forms:
   form_info: {}
 e2e_actions: []

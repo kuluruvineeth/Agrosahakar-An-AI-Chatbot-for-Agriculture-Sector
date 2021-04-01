@@ -1,60 +1,458 @@
 version: "2.0"
-
 stories:
-
-- story: happy path
+- story: About us path
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
-
-- story: sad path 1
+  - intent: about_us
+  - action: utter_about_us
+- story: price path
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
-
-- story: sad path 2
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: deny
-  - action: utter_goodbye
-
-- story: msp path
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: state_entry
-  - action: action_get_price
-
-- story:  msp path 2
-  steps:
-  - intent: greet1
-  - action: utter_greet1
+  - intent: agribot
+  - action: utter_agribot
+  - intent: statistics
+  - action: utter_statistics
+  - intent: price
+  - action: utter_ask_crop1
   - intent: crop_entry
   - action: utter_tc_as
   - intent: state_entry
   - action: action_get_price
-
-- story:  Fertilizer consumption
+- story: fertilizers path
   steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: agribot
+  - action: utter_agribot
+  - intent: statistics
+  - action: utter_statistics
   - intent: ferti
   - action: utter_ferti
   - intent: state_entry
   - action: action_get_fertilizers
-  - action: utter_did_that_help
-  - intent: mood_great
-  - action: utter_happy 
-
-
-
-
+- story: ferti recommendation path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: agribot
+  - action: utter_agribot
+  - intent: ferti_recommendation
+  - action: utter_ask_phos
+  - intent: phosphorous_entry
+    entities:
+    - phosphorous: P_30
+  - slot_was_set:
+    - phosphorous: P_30
+  - action: utter_ask_crop
+  - intent: crop_entry
+  - action: utter_ask_nitrogen
+  - intent: nitrogen_entry
+    entities:
+    - nitrogen: N_20
+  - slot_was_set:
+    - nitrogen: N_20
+  - action: utter_ask_potas
+  - intent: potassium_entry
+    entities:
+    - potassium: K_40
+  - slot_was_set:
+    - potassium: K_40
+  - action: action_ferti_recommendation
+- story: crop recommendation path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: agribot
+  - action: utter_agribot
+  - intent: recommend
+  - action: utter_ask_ph
+  - intent: power_hydrogen
+    entities:
+    - ph: ph_5.65
+  - slot_was_set:
+    - ph: ph_5.65
+  - action: utter_ask_nitrogen
+  - intent: nitrogen_entry
+    entities:
+    - nitrogen: N_20
+  - slot_was_set:
+    - nitrogen: N_20
+  - action: utter_ask_phos
+  - intent: phosphorous_entry
+    entities:
+    - phosphorous: P_30
+  - slot_was_set:
+    - phosphorous: P_30
+  - action: utter_ask_city
+  - intent: cities
+    entities:
+    - city: chennai
+  - slot_was_set:
+    - city: chennai
+  - action: utter_ask_potas
+  - intent: potassium_entry
+    entities:
+    - potassium: K_40
+  - slot_was_set:
+    - potassium: K_40
+  - action: utter_ask_rainfall
+  - intent: rainfall_entry
+    entities:
+    - rainfall: rf_263.72
+  - slot_was_set:
+    - rainfall: rf_263.72
+  - action: action_crop_recommendation
+- story: price path 1
+  steps:
+  - action: utter_tc_as
+  - slot_was_set:
+    - crop: rice
+  - intent: state_entry
+    entities:
+    - location: Karnataka
+  - slot_was_set:
+    - location: Karnataka
+  - action: action_get_price
+  - action: utter_goodbye
+- story: price path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: agribot
+  - action: utter_agribot
+  - intent: statistics
+  - action: utter_statistics
+  - intent: price
+  - action: utter_ask_crop1
+  - slot_was_set:
+    - crop: rice
+  - intent: crop_entry
+    entities:
+    - crop: rice
+  - action: utter_tc_as
+  - slot_was_set:
+    - location: Andhra Pradesh
+  - intent: state_entry
+    entities:
+    - location: Andhra Pradesh
+  - action: action_get_price
+  - action: utter_goodbye
+- story: fertilizers path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: agribot
+  - intent: statistics
+  - intent: ferti
+  - slot_was_set:
+    - location: Kerala
+  - intent: state_entry
+    entities:
+    - location: Kerala
+  - slot_was_set:
+    - location: Kerala
+  - action: action_get_fertilizers
+  - action: utter_goodbye
+- story: fertilizers path 2
+  steps:
+  - action: utter_greet
+  - intent: greet
+  - intent: agribot
+  - action: utter_statistics
+  - intent: statistics
+  - action: utter_ferti
+  - slot_was_set:
+    - location: Kerala
+  - intent: ferti
+  - intent: state_entry
+    entities:
+    - location: Kerala
+  - slot_was_set:
+    - location: Kerala
+  - action: action_get_fertilizers
+  - action: utter_goodbye
+- story: crop recommendation path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: recommend
+  - action: utter_ask_ph
+  - slot_was_set:
+    - ph: ph_7.62
+  - intent: power_hydrogen
+    entities:
+    - ph: ph_7.62
+  - action: utter_ask_nitrogen
+  - slot_was_set:
+    - nitrogen: N_40
+  - intent: nitrogen_entry
+    entities:
+    - nitrogen: N_40
+  - action: utter_ask_phos
+  - slot_was_set:
+    - phosphorous: P_20
+  - intent: phosphorous_entry
+    entities:
+    - phosphorous: P_20
+  - action: utter_ask_city
+  - slot_was_set:
+    - city: chennai
+  - intent: cities
+    entities:
+    - city: chennai
+  - action: utter_ask_potas
+  - slot_was_set:
+    - potassium: K_10
+  - intent: potassium_entry
+    entities:
+    - potassium: K_10
+  - action: utter_ask_rainfall
+  - slot_was_set:
+    - rainfall: rf_20
+  - intent: rainfall_entry
+    entities:
+    - rainfall: rf_20
+  - action: action_crop_recommendation
+  - action: utter_goodbye
+- story: fertilizers path 3
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: agribot
+  - action: utter_agribot
+  - intent: statistics
+  - action: utter_statistics
+  - intent: ferti
+  - action: utter_ferti
+  - slot_was_set:
+    - location: Bihar
+  - intent: state_entry
+    entities:
+    - location: Bihar
+  - action: action_get_fertilizers
+  - action: utter_goodbye
+- story: price path 3
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: agribot
+  - action: utter_agribot
+  - intent: statistics
+  - action: utter_statistics
+  - intent: price
+  - action: utter_ask_crop1
+  - slot_was_set:
+    - crop: cotton
+  - intent: crop_entry
+    entities:
+    - crop: cotton
+  - action: utter_tc_as
+  - slot_was_set:
+    - location: Gujarat
+  - intent: state_entry
+    entities:
+    - location: Gujarat
+  - action: action_get_price
+  - action: utter_goodbye
+- story: crop recommendation path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: agribot
+  - action: utter_agribot
+  - intent: recommend
+  - action: utter_ask_ph
+  - slot_was_set:
+    - ph: ph_2.32
+  - intent: power_hydrogen
+    entities:
+    - ph: ph_2.32
+  - action: utter_ask_nitrogen
+  - slot_was_set:
+    - nitrogen: N_100
+  - intent: nitrogen_entry
+    entities:
+    - nitrogen: N_100
+  - action: utter_ask_phos
+  - slot_was_set:
+    - phosphorous: P_120
+  - intent: phosphorous_entry
+    entities:
+    - phosphorous: P_120
+  - action: utter_ask_city
+  - intent: cities
+    entities:
+    - city: kolkata
+  - slot_was_set:
+    - city: kolkata
+  - action: utter_ask_potas
+  - slot_was_set:
+    - potassium: K_150
+  - intent: potassium_entry
+    entities:
+    - potassium: K_150
+  - action: utter_ask_rainfall
+  - slot_was_set:
+    - rainfall: rf_160
+  - intent: rainfall_entry
+    entities:
+    - rainfall: rf_160
+  - action: action_crop_recommendation
+- story: ferti recommendation path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ferti_recommendation
+  - action: utter_ask_phos
+  - intent: phosphorous_entry
+    entities:
+    - phosphorous: P_20
+  - slot_was_set:
+    - phosphorous: P_20
+  - action: utter_ask_crop
+  - intent: crop_entry
+    entities:
+    - crop: carrot
+  - slot_was_set:
+    - crop: carrot
+  - action: utter_ask_nitrogen
+  - intent: nitrogen_entry
+    entities:
+    - nitrogen: N_30
+  - slot_was_set:
+    - nitrogen: N_30
+  - action: utter_ask_potas
+  - intent: potassium_entry
+    entities:
+    - potassium: K_40
+  - slot_was_set:
+    - potassium: K_40
+  - action: action_ferti_recommendation
+  - action: utter_goodbye
+- story: ferti recommendation path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: agribot
+  - action: utter_agribot
+  - intent: ferti_recommendation
+  - action: utter_ask_phos
+  - slot_was_set:
+    - phosphorous: P_20
+  - intent: phosphorous_entry
+    entities:
+    - phosphorous: P_20
+  - action: utter_ask_crop
+  - slot_was_set:
+    - crop: carrot
+  - intent: crop_entry
+    entities:
+    - crop: carrot
+  - action: utter_ask_nitrogen
+  - slot_was_set:
+    - nitrogen: N_30
+  - intent: nitrogen_entry
+    entities:
+    - nitrogen: N_30
+  - action: utter_ask_potas
+  - slot_was_set:
+    - potassium: K_40
+  - intent: potassium_entry
+    entities:
+    - potassium: K_40
+  - action: action_ferti_recommendation
+  - action: utter_goodbye
+- story: ferti recommendation path 3
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: agribot
+  - action: utter_agribot
+  - intent: ferti_recommendation
+  - action: utter_ask_phos
+  - slot_was_set:
+    - phosphorous: P_20
+  - intent: phosphorous_entry
+    entities:
+    - phosphorous: P_20
+  - action: utter_ask_crop
+  - slot_was_set:
+    - crop: coffee
+  - intent: crop_entry
+    entities:
+    - crop: coffee
+  - action: utter_ask_nitrogen
+  - slot_was_set:
+    - nitrogen: N_30
+  - intent: nitrogen_entry
+    entities:
+    - nitrogen: N_30
+  - action: utter_ask_potas
+  - slot_was_set:
+    - potassium: K_40
+  - intent: potassium_entry
+    entities:
+    - potassium: K_40
+  - action: action_ferti_recommendation
+  - action: utter_goodbye
+- story: ferti recommendation path 4
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: agribot
+  - action: utter_agribot
+  - intent: ferti_recommendation
+  - action: utter_ask_phos
+  - slot_was_set:
+    - phosphorous: P_50
+  - intent: phosphorous_entry
+    entities:
+    - phosphorous: P_50
+  - action: utter_ask_crop
+  - slot_was_set:
+    - crop: apple
+  - intent: crop_entry
+    entities:
+    - crop: apple
+  - action: utter_ask_nitrogen
+  - slot_was_set:
+    - nitrogen: N_70
+  - intent: nitrogen_entry
+    entities:
+    - nitrogen: N_70
+  - action: utter_ask_potas
+  - slot_was_set:
+    - potassium: K_60
+  - intent: potassium_entry
+    entities:
+    - potassium: K_60
+  - action: action_ferti_recommendation
+  - action: utter_goodbye
+- story: ferti recommendation path 5
+  steps:
+  - action: utter_greet
+  - intent: greet
+  - action: utter_agribot
+  - intent: ferti_recommendation
+  - slot_was_set:
+    - phosphorous: P_20
+  - intent: phosphorous_entry
+    entities:
+    - phosphorous: P_20
+  - action: utter_ask_nitrogen
+  - slot_was_set:
+    - nitrogen: N_30
+  - intent: crop_entry
+    entities:
+    - crop: watermelon
+  - slot_was_set:
+    - potassium: K_10
+  - intent: potassium_entry
+    entities:
+    - potassium: K_10
+  - slot_was_set:
+    - phosphorous: P_20
+  - action: action_ferti_recommendation
+  - action: utter_goodbye

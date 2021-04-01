@@ -35,12 +35,18 @@ from rasa_sdk.forms import FormAction
 from rasa_sdk.events import EventType
 from utils.fertilizer import fertilizer_dic
 import pickle
+import os
+import time
 import pandas as pd
 import numpy as np
+from tabulate import tabulate
 
 import requests
+import subprocess
+from gtts import gTTS
+from mpyg321.mpyg321 import MPyg321Player
 
-from excel_data import DataStore
+# from excel_data import DataStore
 
 crop_recommendation_model_path = 'RandomForest.pkl'
 crop_recommendation_model = pickle.load(open(crop_recommendation_model_path, 'rb'))
@@ -66,20 +72,20 @@ def weather_fetch(city_name):
 
 
 
-class ActionSaveData(Action):
-    def name(self) -> Text:
-        return "action_save_data"
+# class ActionSaveData(Action):
+#     def name(self) -> Text:
+#         return "action_save_data"
 
-    def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        DataStore(tracker.get_slot("nitrogen"),
-            tracker.get_slot("phosphorous"),
-            tracker.get_slot("potassium"),
-            tracker.get_slot("crop"))
-        dispatcher.utter_message(text="Data noted")
+#     def run(self, dispatcher: CollectingDispatcher,
+#             tracker: Tracker,
+#             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+#         DataStore(tracker.get_slot("nitrogen"),
+#             tracker.get_slot("phosphorous"),
+#             tracker.get_slot("potassium"),
+#             tracker.get_slot("crop"))
+#         dispatcher.utter_message(text="Data noted")
 
-        return []
+#         return []
 
 
 
@@ -108,11 +114,26 @@ class ActionCheckPrice(Action):
             yr2=current.json()['field'][2]['name']
             yr3=current.json()['field'][3]['name']
 
+            table_rice = [["Rice",msp_1,yr1],["Rice",msp_2,yr2],["Rice",msp_3,yr3]]
+            header_rice=[" Crop"," Procurement(as per KMS) "," Year "]
+            response=tabulate(table_rice, header_rice, tablefmt="plain")
+
+
+
+
             
-            response = """Crop |\t\t\t Year \t\t\t\t\t |MSP\t\t\t|\nRice |\t\t\t {} \t\t\t\t\t |{}\t\t\t|\nRice |\t\t\t {} \t\t\t\t\t |{}\t\t\t|\nRice |\t\t\t {} \t\t\t\t\t |\t\t\t{}""".format(yr1,msp_1,yr2,msp_2,yr3,msp_3)
+
+
+
 
 
             dispatcher.utter_message(text=response)
+            language = 'en'
+            audio = gTTS(text=response, lang=language, slow=False)
+            audio.save("rice.mp3")
+            os.system("rice.mp3")
+            time.sleep(18000)
+
             return []
 
         elif (crop=='cotton'):
@@ -184,39 +205,44 @@ class ActionFertilizerConsumption(Action):
 
 
         dispatcher.utter_message(text=response)
+        language = 'en'
+        audio = gTTS(text=response, lang=language, slow=False)
+        audio.save("anything.mp3")
+        os.system("anything.mp3")
+        time.sleep(34000)   
 
         return []
 
 
-class FertilizerRecommendation(FormAction):
-    def name(self) -> Text:
-        return "fertilizer_info"
-    @staticmethod
-    def required_slots(tracker: "Tracker") -> List[Text]:
-        return ["nitrogen","phosphorous","potassium","crop"]
+# class FertilizerRecommendation(FormAction):
+#     def name(self) -> Text:
+#         return "fertilizer_info"
+#     @staticmethod
+#     def required_slots(tracker: "Tracker") -> List[Text]:
+#         return ["nitrogen","phosphorous","potassium","crop"]
 
-    def slot_mappings(self) -> Dict[Text, Union[Dict, List[Dict[Text, Any]]]]:
-        return {
-        "nitrogen":[self.from_text()],
-        "phosphorous":[self.from_text()],
-        "potassium":[self.from_text()],
-        "crop":[self.from_text()]
-        }
+#     def slot_mappings(self) -> Dict[Text, Union[Dict, List[Dict[Text, Any]]]]:
+#         return {
+#         "nitrogen":[self.from_text()],
+#         "phosphorous":[self.from_text()],
+#         "potassium":[self.from_text()],
+#         "crop":[self.from_text()]
+#         }
 
-    def submit(
-        self,
-        dispatcher: "CollectingDispatcher",
-        tracker: "Tracker",
-        domain: Dict[Text, Any],
-    ) -> List[EventType]:
+#     def submit(
+#         self,
+#         dispatcher: "CollectingDispatcher",
+#         tracker: "Tracker",
+#         domain: Dict[Text, Any],
+#     ) -> List[EventType]:
 
-        dispatcher.utter_message("Here are the information that you provided.\nNitrogen: {0},\nPhosphorous: {1},\nPotassium: {2},\ncrop: {3}".format(
-        tracker.get_slot("nitrogen"),
-        tracker.get_slot("phosphorous"),
-        tracker.get_slot("potassium"),
-        tracker.get_slot("crop")
-        ))
-        return []
+#         dispatcher.utter_message("Here are the information that you provided.\nNitrogen: {0},\nPhosphorous: {1},\nPotassium: {2},\ncrop: {3}".format(
+#         tracker.get_slot("nitrogen"),
+#         tracker.get_slot("phosphorous"),
+#         tracker.get_slot("potassium"),
+#         tracker.get_slot("crop")
+#         ))
+#         return []
 
 class ActionFertilizerRecommendation(Action):
     def name(self) -> Text:
@@ -274,7 +300,7 @@ class ActionFertilizerRecommendation(Action):
         return []
 
 
-class ActionFertilizerRecommendation(Action):
+class ActionCropRecommendation(Action):
     def name(self) -> Text:
         return "action_crop_recommendation"
 
