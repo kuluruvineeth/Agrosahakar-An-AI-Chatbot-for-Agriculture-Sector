@@ -56,6 +56,7 @@ nlu:
     - [papaya](crop)
     - [coconut](crop)
     - [coffee](crop)
+    - [Rice](crop)
 - intent: state_entry
   examples: |
     - [Andhra Pradesh](location)
@@ -180,6 +181,9 @@ nlu:
     - [ph_6.75](ph)
     - [ph_6.54](ph)
     - [ph_4.62](ph)
+    - [ph_4.5](ph)
+    - [ph_30](phosphorous)
+    - [ph_20](ph)
 - intent: rainfall_entry
   examples: |
     - [rf_185.27](rainfall)
@@ -202,6 +206,9 @@ nlu:
     - [rf_150](rainfall)
     - [rf_67](rainfall)
     - [rf_70](rainfall)
+    - [rf_123](rainfall)
+    - [rf_20](rainfall)
+    - [rf_100](rainfall)
 - intent: cities
   examples: |
     - [chennai](city)
@@ -216,6 +223,7 @@ nlu:
     - [dharwad](city)
     - [kurnool](city)
     - [kharagpur](city)
+    - [Chennai](city)
 - intent: price
   examples: |
     - crop price
