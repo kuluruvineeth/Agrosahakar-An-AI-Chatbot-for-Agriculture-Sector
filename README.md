@@ -29,7 +29,7 @@ are to be grown based on the state,soil ph value,rainfall,etc. so that a good yi
 
 ### Screenshots of prototype in RASA X server
 <img src="https://github.com/kuluruvineeth/Agrosahakar/blob/master/images/rasax1.png">
-<img src="https://github.com/kuluruvineeth/Agrosahakar/blob/master/images/rasax1.png">
+<img src="https://github.com/kuluruvineeth/Agrosahakar-An-AI-Chatbot-for-Agriculture-Sector/blob/master/images/rasax2.png">
 
 ## Screenshots of prototype in Telegram
 <img src="https://github.com/kuluruvineeth/Agrosahakar/blob/master/images/tel-1.png" width="400" height="400">
