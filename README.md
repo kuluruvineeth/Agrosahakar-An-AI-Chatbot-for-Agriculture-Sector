@@ -24,6 +24,8 @@ are to be grown based on the state,soil ph value,rainfall,etc. so that a good yi
 <img src="https://github.com/kuluruvineeth/Agrosahakar/blob/master/Tools_and_Technologies/ngrok.png" width="100" height="100" />
 </p>
 
+### Primary Language used : **Python**
+
 ### How to use our Chatbot
 * Follow the steps mentioned in this [file](https://github.com/kuluruvineeth/Agrosahakar/blob/master/connect-this-repo.md) to clone this repository and use our **CHATBOT** **
 
